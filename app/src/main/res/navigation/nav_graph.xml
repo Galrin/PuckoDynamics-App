@@ -3,34 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/constructorFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.puckodynamics.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_sandBoxFragment"
-            app:destination="@id/sandBoxFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.puckodynamics.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/sandBoxFragment"
-        android:name="com.example.puckodynamics.SandBoxFragment"
+        android:id="@+id/constructorFragment"
+        android:name="com.example.puckodynamics.ConstructorFragment"
         android:label="fragment_sand_box"
-        tools:layout="@layout/fragment_sand_box" />
+        tools:layout="@layout/fragment_constructor" >
+        <action
+            android:id="@+id/action_constructorFragment_to_blockSettingFragment"
+            app:destination="@id/blockSettingFragment"
+            app:enterAnim="@anim/slide_below_to_center"
+            app:exitAnim="@anim/slide_center_to_top"
+            app:popEnterAnim="@anim/slide_top_to_center"
+            app:popExitAnim="@anim/slide_center_to_below"
+            app:popUpTo="@id/constructorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blockSettingFragment"
+        android:name="com.example.puckodynamics.BlockSettingFragment"
+        android:label="fragment_block_setting"
+        tools:layout="@layout/fragment_block_setting"
+        app:enterAnim="@anim/slide_below_to_center"
+        app:exitAnim="@anim/slide_center_to_top"
+        app:popEnterAnim="@anim/slide_top_to_center"
+        app:popExitAnim="@anim/slide_center_to_below">
+        <argument
+            android:name="uuid"
+            app:argType="string" />
+        <argument
+            android:name="blockType"
+            app:argType="string" />
+    </fragment>
 </navigation>
