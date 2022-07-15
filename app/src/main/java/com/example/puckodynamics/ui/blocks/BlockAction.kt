@@ -5,8 +5,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.puckodynamics.data.model.Params
 import com.example.puckodynamics.databinding.BlockActionBinding
-import com.example.puckodynamics.models.Params
 import com.example.puckodynamics.utils.toVisibility
 
 

@@ -1,4 +1,4 @@
-package com.example.puckodynamics.util;
+package com.example.puckodynamics.utils;
 
 import android.util.Log;
 
@@ -13,11 +13,10 @@ public class SerealizeHelper {
         FileInputStream fileInputStream = new FileInputStream(file);
         Scanner scanner = new Scanner(fileInputStream);
         scanner.useDelimiter("\\A");
-        String streamString = scanner.hasNext() ? scanner.next() : "";
 
         //Log.d("FILE_STRING", streamString);
 
-        return  streamString;
+        return scanner.hasNext() ? scanner.next() : "";
     }
 
     /*
