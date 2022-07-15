@@ -29,6 +29,7 @@ import com.example.puckodynamics.ui.scriptRecycler.ScriptFragment;
 import com.example.puckodynamics.ui.toVostok.toVostokActivity;
 import com.example.puckodynamics.util.SerealizeHelper;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.FileNotFoundException;
@@ -133,34 +134,35 @@ public class GroupFragment extends Fragment {
             }
         });
 
-        MaterialToolbar materialToolbar = v.findViewById(R.id.toolbar3);
-        //materialToolbar.inflateMenu(R.menu.material_main);
-        materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.addGroup:
-                        Toast.makeText(getContext(), "addGroup", Toast.LENGTH_SHORT).show();
-                        FileOutputStream fos;
-                        try {
-                            fos = getContext().openFileOutput("t qqввп est", Context.MODE_PRIVATE);
-                            fos.write("aa".getBytes(StandardCharsets.UTF_8));
-                            fos.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
 //
-//                        for(File fileName : getContext().getApplicationContext().getFilesDir()) {
+//        MaterialToolbar materialToolbar = v.findViewById(R.id.toolbar3);
+//        //materialToolbar.inflateMenu(R.menu.material_main);
+//        materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.addGroup:
+//                        Toast.makeText(getContext(), "addGroup", Toast.LENGTH_SHORT).show();
+//                        FileOutputStream fos;
+//                        try {
+//                            fos = getContext().openFileOutput("t qqввп est", Context.MODE_PRIVATE);
+//                            fos.write("aa".getBytes(StandardCharsets.UTF_8));
+//                            fos.close();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+////
+////                        for(File fileName : getContext().getApplicationContext().getFilesDir()) {
+////                            Log.d("FILE: ", fileName);
+////                        }
+//                        for(String fileName : getContext().getApplicationContext().fileList()) {
 //                            Log.d("FILE: ", fileName);
 //                        }
-                        for(String fileName : getContext().getApplicationContext().fileList()) {
-                            Log.d("FILE: ", fileName);
-                        }
-                        break;
-                }
-                return false;
-            }
-        });
+//                        break;
+//                }
+//                return false;
+//            }
+//        });
 
     }
 
