@@ -24,4 +24,7 @@ interface BlockInterface {
     fun getParams(): Params
 
     fun setParams(params: Params)
+
+    fun setName(name: String)
+    fun setDescription(description: String)
 }

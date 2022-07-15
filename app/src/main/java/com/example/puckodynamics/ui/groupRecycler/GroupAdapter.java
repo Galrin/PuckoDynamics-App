@@ -46,6 +46,6 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupHolder> {
 
 
     public void onRecyclerViewItemClick(int position) {
-        ((GroupFragment) activity).onRecyclerViewItemClick(position);
+        activity.onRecyclerViewItemClick(position);
     }
 }

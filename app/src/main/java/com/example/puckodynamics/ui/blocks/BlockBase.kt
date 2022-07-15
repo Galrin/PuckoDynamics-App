@@ -17,10 +17,6 @@ abstract class BlockBase(context: Context?) : LinearLayout(context), BlockInterf
 
     protected var isBlockSelected: Boolean = false
 
-    override fun openMenu() {
-        TODO("Not yet implemented")
-    }
-
     private lateinit var listener: OnTouchListener
     private lateinit var touchBtn: View
 
