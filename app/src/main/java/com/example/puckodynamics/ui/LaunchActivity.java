@@ -18,7 +18,9 @@ import android.widget.Toast;
 
 import com.example.puckodynamics.AppDelegate;
 import com.example.puckodynamics.R;
+import com.example.puckodynamics.data.model.Device;
 import com.example.puckodynamics.ui.groupRecycler.GroupFragment;
+import com.example.puckodynamics.ui.scriptRecycler.DeviceFragment;
 import com.example.puckodynamics.ui.splashscreen.SplashFragment;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,7 +44,7 @@ public class LaunchActivity extends AppCompatActivity {
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.ActivityMain_fragment_container, GroupFragment.newInstance()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.ActivityMain_fragment_container, DeviceFragment.newInstance()).commit();
 
                 }
             }, 3000);
@@ -74,12 +76,13 @@ public class LaunchActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnavigation);
         bottomNavigationView.setOnItemReselectedListener(new NavigationBarView.OnItemReselectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {    Toast.makeText(LaunchActivity.this, "щщщ", Toast.LENGTH_SHORT).show();
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.scripts:
                         getSupportFragmentManager().beginTransaction().replace(R.id.ActivityMain_fragment_container, GroupFragment.newInstance()).commit();
-
-
+                        break;
+                    default:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.ActivityMain_fragment_container, DeviceFragment.newInstance()).commit();
                         break;
                 }
             }

@@ -45,10 +45,10 @@ public class DeviceFragment extends Fragment {
 
 
     // TODO: Rename and change types and number of parameters
-    public static DeviceFragment newInstance(int position) {
+    public static DeviceFragment newInstance() {
         DeviceFragment fragment = new DeviceFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, position);
+//        args.putInt(ARG_PARAM1, position);
 //        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -67,7 +67,7 @@ public class DeviceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_devices, container, false);
+        return inflater.inflate(R.layout.fragment_script, container, false);
     }
 
     @Override
@@ -80,31 +80,31 @@ public class DeviceFragment extends Fragment {
         mGroupRecycler.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         //mGroupRecycler.addItemDecoration();
 
-        mFab = v.findViewById(R.id.floatingActionButton);
-        mFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        MaterialToolbar materialToolbar = v.findViewById(R.id.toolbar3);
-        //materialToolbar.inflateMenu(R.menu.material_main);
-        materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.addGroup:
-                        Toast.makeText(getContext(), "addGroup", Toast.LENGTH_SHORT).show();
-
-                        break;
-                }
-                return false;
-            }
-        });
+//        mFab = v.findViewById(R.id.floatingActionButton);
+//        mFab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//
+//        MaterialToolbar materialToolbar = v.findViewById(R.id.toolbar3);
+//        //materialToolbar.inflateMenu(R.menu.material_main);
+//        materialToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.addGroup:
+//                        Toast.makeText(getContext(), "addGroup", Toast.LENGTH_SHORT).show();
+//
+//                        break;
+//                }
+//                return false;
+//            }
+//        });
     }
 
     public void onRecyclerViewItemClick(int position) {
-        Toast.makeText(getContext(), "aaa" + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "" + position, Toast.LENGTH_SHORT).show();
     }
 }

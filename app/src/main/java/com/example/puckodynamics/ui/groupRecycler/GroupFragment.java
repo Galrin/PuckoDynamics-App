@@ -44,6 +44,7 @@ public class GroupFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((AppDelegate) getContext().getApplicationContext()).revalidateGroups();
     }
 
     @Override
@@ -98,7 +99,7 @@ public class GroupFragment extends Fragment {
 
     public void onRecyclerViewItemClick(int position) {
         Toast.makeText(getContext(), "aaa" + position, Toast.LENGTH_SHORT).show();
-        getParentFragmentManager().beginTransaction().replace(R.id.ActivityMain_fragment_container, DeviceFragment.newInstance(position)).commit();
+        getParentFragmentManager().beginTransaction().replace(R.id.ActivityMain_fragment_container, DeviceFragment.newInstance()).commit();
 
     }
 }
