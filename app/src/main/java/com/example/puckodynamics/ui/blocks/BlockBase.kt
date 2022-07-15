@@ -17,12 +17,20 @@ abstract class BlockBase(context: Context?) : LinearLayout(context), BlockInterf
 
     protected var isBlockSelected: Boolean = false
 
-    private lateinit var listener: OnTouchListener
-    private lateinit var touchBtn: View
+    private lateinit var listenerMove: OnTouchListener
+    private lateinit var touchMove: View
 
-    protected fun setViewToTouchListener(view: View, onTouchListener: OnTouchListener) {
-        touchBtn = view
-        this.listener = onTouchListener
+    protected fun setViewToTouchListenerMove(view: View, onTouchListener: OnTouchListener) {
+        touchMove = view
+        this.listenerMove = onTouchListener
+    }
+
+    private lateinit var listenerScale: OnTouchListener
+    private lateinit var touchScale: View
+
+    protected fun setViewToTouchListenerScale(view: View, onTouchListener: OnTouchListener) {
+        touchScale = view
+        this.listenerScale = onTouchListener
     }
 
     override fun delete() {
@@ -54,10 +62,17 @@ abstract class BlockBase(context: Context?) : LinearLayout(context), BlockInterf
 
     override fun toggleSelect() {
         isBlockSelected = !isBlockSelected
-        if (isBlockSelected)
-            touchBtn.setOnTouchListener(listener)
-        else
-            touchBtn.setOnTouchListener(null)
+        if (isBlockSelected) {
+            touchMove.setOnTouchListener(listenerMove)
+            touchScale.setOnTouchListener(listenerScale)
+        } else {
+            touchMove.setOnTouchListener(null)
+            touchScale.setOnTouchListener(null)
+        }
+    }
+
+    fun setSelectedBlock(boolean: Boolean) {
+        isBlockSelected = boolean
     }
 
     companion object {
