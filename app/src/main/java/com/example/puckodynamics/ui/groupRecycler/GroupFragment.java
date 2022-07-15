@@ -1,5 +1,6 @@
 package com.example.puckodynamics.ui.groupRecycler;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import com.example.puckodynamics.AppDelegate;
 import com.example.puckodynamics.R;
 import com.example.puckodynamics.ui.scriptRecycler.ScriptFragment;
+import com.example.puckodynamics.ui.toVostok.toVostokActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -82,7 +84,7 @@ public class GroupFragment extends Fragment {
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(v.getContext(), toVostokActivity.class));
             }
         });
 
