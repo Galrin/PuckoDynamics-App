@@ -3,30 +3,24 @@ package com.example.puckodynamics;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.puckodynamics.ui.toVostok.toVostokActivity;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.PopupWindow;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.Gravity;
-import android.view.View;
-
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.puckodynamics.databinding.ActivityMainBinding;
+import com.example.puckodynamics.ui.toVostok.toVostokActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.PopupWindow;
-
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -66,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
-                        View customView = getLayoutInflater().inflate(R.layout.group_create_popup, null);
+            View customView = getLayoutInflater().inflate(R.layout.group_create_popup, null);
 
             Button closePopupBtn = customView.findViewById(R.id.groupCreateButton);
 
@@ -76,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             PopupWindow popupWindow = new PopupWindow(customView, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
             popupWindow.setFocusable(true);
             //display the popup window
-            popupWindow.showAtLocation(item.getActionView(), Gravity.CENTER, 0, 0);
+            popupWindow.showAtLocation(item.getActionView().getRootView(), Gravity.CENTER, 0, 0);
 
             //close the popup window on button click
             closePopupBtn.setOnClickListener(v11 -> {
@@ -85,23 +79,22 @@ public class MainActivity extends AppCompatActivity {
                     fos = getApplicationContext().openFileOutput(edit.getText().toString(), Context.MODE_PRIVATE);
                     fos.write("aa".getBytes(StandardCharsets.UTF_8));
                     fos.close();
-                    ((AppDelegate)getApplicationContext()).revalidateGroups();
-                   // mGroupRecycler.requestLayout();
+                    ((AppDelegate) getApplicationContext()).revalidateGroups();
+                    // mGroupRecycler.requestLayout();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 popupWindow.dismiss();
             });
             return true;
-        }
-
-        else if(id == R.id.action_export) {
+        } else if (id == R.id.action_export) {
             startActivity(new Intent(MainActivity.this, toVostokActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
     }
-//NavHostFragment.findNavController(FirstFragment.this)
+
+    //NavHostFragment.findNavController(FirstFragment.this)
 //                .navigate(R.id.action_FirstFragment_to_SecondFragment));
     @Override
     public boolean onSupportNavigateUp() {
