@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/block_start"
+        android:orderInCategory="100"
+        android:title="@string/start"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/block_await_if"
+        android:orderInCategory="100"
+        android:title="@string/await_if"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/block_now_if"
+        android:orderInCategory="100"
+        android:title="@string/now_if"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/block_action"
+        android:orderInCategory="100"
+        android:title="@string/action"
+        app:showAsAction="never" />
+</menu>

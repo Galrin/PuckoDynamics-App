@@ -9,6 +9,18 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="go_test">Go test</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="n">Для создания нового блока\nнажмите на плюсик в нижнем правом экране</string>
+    <string name="delete_block">Перетащите сюда чтобы удалить</string>
+    <string name="duplicate">duplicate</string>
+    <string name="pin_here">Присоединять\nсюда</string>
+    <string name="pin_here_vertical">Пр\nис\nое\nди\nня\nть\nсю\nда</string>
+    <string name="start">Старт</string>
+    <string name="await_if">Ожидаем условия</string>
+    <string name="now_if">Условие</string>
+    <string name="action">Действие</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
