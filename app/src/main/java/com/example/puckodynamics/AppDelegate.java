@@ -25,6 +25,9 @@ public class AppDelegate extends Application {
     {
         scripts.add(new Device("Колонка Алиса", R.drawable.alice));
         scripts.add(new Device("Пылесос", R.drawable.vacuum_robot));
+        scripts.add(new Device("Горячий пол"));
+        scripts.add(new Device("Лампочка"));
+        scripts.add(new Device("Кофе машина"));
     }
 
     @Override
