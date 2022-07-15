@@ -38,7 +38,7 @@ public class LaunchActivity extends AppCompatActivity {
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    getSupportFragmentManager().beginTransaction().add(R.id.ActivityMain_fragment_container, GroupFragment.newInstance()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.ActivityMain_fragment_container, GroupFragment.newInstance()).commit();
 
                 }
             }, 3000);

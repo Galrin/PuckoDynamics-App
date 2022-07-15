@@ -78,7 +78,7 @@ public class ScriptFragment extends Fragment {
         mGroupRecycler = v.findViewById(R.id.groupRecycler);
 
         mGroupRecycler.setAdapter(new ScriptAdapter(this, mAppContext.getScripts()));
-        mGroupRecycler.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        mGroupRecycler.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL));
         //mGroupRecycler.addItemDecoration();
 
         mFab = v.findViewById(R.id.floatingActionButton);

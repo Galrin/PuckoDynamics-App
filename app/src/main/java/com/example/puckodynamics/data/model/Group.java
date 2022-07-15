@@ -11,6 +11,11 @@ public class Group {
         this.name = name;
     }
 
+    public Group(String name, List<Script> scriptList) {
+        this.name = name;
+        this.scriptList = scriptList;
+    }
+
     public String getName() {
         return name;
     }
