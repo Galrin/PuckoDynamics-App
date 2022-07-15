@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
-import com.example.puckodynamics.databinding.FragmentSandBoxBinding
+import com.example.puckodynamics.databinding.FragmentConstructorBinding
 import com.example.puckodynamics.ui.blocks.*
 import com.example.puckodynamics.ui.blocks.BlockBase.Companion.BOTTOM
 import com.example.puckodynamics.ui.blocks.BlockBase.Companion.LEFT
@@ -16,24 +16,29 @@ import com.example.puckodynamics.utils.hasTouchTwoView
 import com.example.puckodynamics.utils.toVisibility
 
 
-class SandBoxFragment : Fragment() {
+class ConstructorFragment : Fragment() {
 
-    private lateinit var binding: FragmentSandBoxBinding
-
-    private val blockList = mutableListOf<BlockBase>()
-
+    private lateinit var binding: FragmentConstructorBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         setHasOptionsMenu(true)
-        binding = FragmentSandBoxBinding.inflate(inflater, container, false)
+        binding = FragmentConstructorBinding.inflate(inflater, container, false)
+
+        BlockSingleton.blockList.forEach {
+            (it.parent as ViewGroup).removeView(it)
+            binding.container.addView(it)
+        }
+
+        binding.intro.visibility = BlockSingleton.blockList.isEmpty().toVisibility()
+
         return binding.root
     }
 
     // Текущий блок выбран дял перемещения
     private fun hasBlockMoved(hasTouch: Boolean) {
         binding.deleteContainer.visibility = hasTouch.toVisibility()
-        blockList.forEach {
+        BlockSingleton.blockList.forEach {
             it.toggleZoneConnect(hasTouch)
         }
     }
@@ -47,7 +52,7 @@ class SandBoxFragment : Fragment() {
         } else
             binding.deleteContainer.setBackgroundColor(resources.getColor(R.color.gray_translucent))
 
-        blockList.forEach { blockWithPins ->
+        BlockSingleton.blockList.forEach { blockWithPins ->
             if (block == blockWithPins)
                 println("TODO")
             else {
@@ -98,7 +103,7 @@ class SandBoxFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         binding.intro.setOnClickListener {
-            blockList.forEach {
+            BlockSingleton.blockList.forEach {
                 println(it.getPins())
             }
         }
@@ -115,13 +120,13 @@ class SandBoxFragment : Fragment() {
                     R.id.block_start -> {
                         val customBlock = BlockStart(requireContext(), binding.root)
                         binding.root.addView(customBlock)
-                        blockList.add(customBlock)
-                        binding.intro.visibility = (blockList.size == 0).toVisibility()
+                        BlockSingleton.blockList.add(customBlock)
+                        binding.intro.visibility = (BlockSingleton.blockList.size == 0).toVisibility()
                         val touchListener = TouchListener()
                         customBlock.setOnClickListener {
                             touchListener.toggleZoneDelete { hasBlockMoved(it) }
                             touchListener.hasCrossBlock { blockX, blockY, hasTouch, block -> hasTouchBlockWithDelete(blockX = blockX, blockY = blockY, hasTouch = hasTouch, block = block) }
-                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, blockList)))
+                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, BlockSingleton.blockList)))
                             customBlock.toggleSelect()
                         }
                         customBlock.setName("First name $counter")
@@ -132,13 +137,13 @@ class SandBoxFragment : Fragment() {
                     R.id.block_await_if -> {
                         val customBlock = BlockAwaitIf(requireContext(), binding.root)
                         binding.root.addView(customBlock)
-                        blockList.add(customBlock)
-                        binding.intro.visibility = (blockList.size == 0).toVisibility()
+                        BlockSingleton.blockList.add(customBlock)
+                        binding.intro.visibility = (BlockSingleton.blockList.size == 0).toVisibility()
                         val touchListener = TouchListener()
                         customBlock.setOnClickListener {
                             touchListener.toggleZoneDelete { hasBlockMoved(it) }
                             touchListener.hasCrossBlock { blockX, blockY, hasTouch, block -> hasTouchBlockWithDelete(blockX = blockX, blockY = blockY, hasTouch = hasTouch, block = block) }
-                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, blockList)))
+                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, BlockSingleton.blockList)))
                             customBlock.toggleSelect()
                         }
                         customBlock.setName("First name $counter")
@@ -149,13 +154,13 @@ class SandBoxFragment : Fragment() {
                     R.id.block_action -> {
                         val customBlock = BlockAction(requireContext(), binding.root)
                         binding.root.addView(customBlock)
-                        blockList.add(customBlock)
-                        binding.intro.visibility = (blockList.size == 0).toVisibility()
+                        BlockSingleton.blockList.add(customBlock)
+                        binding.intro.visibility = (BlockSingleton.blockList.size == 0).toVisibility()
                         val touchListener = TouchListener()
                         customBlock.setOnClickListener {
                             touchListener.toggleZoneDelete { hasBlockMoved(it) }
                             touchListener.hasCrossBlock { blockX, blockY, hasTouch, block -> hasTouchBlockWithDelete(blockX = blockX, blockY = blockY, hasTouch = hasTouch, block = block) }
-                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, blockList)))
+                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, BlockSingleton.blockList)))
                             customBlock.toggleSelect()
                         }
                         customBlock.setName("First name $counter")
@@ -166,13 +171,13 @@ class SandBoxFragment : Fragment() {
                     R.id.block_now_if -> {
                         val customBlock = BlockNowIf(requireContext(), binding.root)
                         binding.root.addView(customBlock)
-                        binding.intro.visibility = (blockList.size == 0).toVisibility()
-                        blockList.add(customBlock)
+                        binding.intro.visibility = (BlockSingleton.blockList.size == 0).toVisibility()
+                        BlockSingleton.blockList.add(customBlock)
                         val touchListener = TouchListener()
                         customBlock.setOnClickListener {
                             touchListener.toggleZoneDelete { hasBlockMoved(it) }
                             touchListener.hasCrossBlock { blockX, blockY, hasTouch, block -> hasTouchBlockWithDelete(blockX = blockX, blockY = blockY, hasTouch = hasTouch, block = block) }
-                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, blockList)))
+                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, BlockSingleton.blockList)))
                             customBlock.toggleSelect()
                         }
                         customBlock.setName("First name $counter")

@@ -23,4 +23,12 @@
     <string name="action">Действие</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Сохранить в память телефона</string>
+    <string name="save_btn">Сохранить</string>
+    <string name="export">Сослать на дальний восток</string>
+    <string name="task">Task</string>
+    <string name="header">Header</string>
+    <string name="ask">Ask</string>
+    <string name="left">Left</string>
+    <string name="todo">TODO</string>
 </resources>

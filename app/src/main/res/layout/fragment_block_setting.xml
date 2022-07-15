@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_translucent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/task"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:lineSpacingMultiplier="3"
+            android:lines="3"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/ask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ask"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:lineSpacingMultiplier="3"
+            android:lines="3"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:inputType="datetime"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_btn" />
+    </LinearLayout>
+
+</FrameLayout>

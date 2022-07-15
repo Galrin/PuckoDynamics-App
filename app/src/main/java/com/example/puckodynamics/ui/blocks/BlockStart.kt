@@ -2,9 +2,12 @@ package com.example.puckodynamics.ui.blocks
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
+import com.example.puckodynamics.R
 import com.example.puckodynamics.data.model.Params
 import com.example.puckodynamics.databinding.BlockStartBinding
 import com.example.puckodynamics.utils.toVisibility
@@ -21,6 +24,10 @@ class BlockStart(context: Context, rootView: ViewGroup) : BlockBase(context) {
 
         binding.menuBlock.unpinBlock.setOnClickListener {
             this.deAttach()
+        }
+
+        binding.menuBlock.settingBlock.setOnClickListener {
+            openMenu()
         }
 
     }
@@ -52,16 +59,23 @@ class BlockStart(context: Context, rootView: ViewGroup) : BlockBase(context) {
         return pinList
     }
 
-    fun setName(name: String) {
+    override fun setName(name: String) {
         binding.name.text = name
     }
 
-    fun setDescription(description: String) {
+    override fun setDescription(description: String) {
         binding.description.text = description
     }
 
     override fun toggleSelect() {
         super.toggleSelect()
         binding.menuBlock.root.visibility = this.isBlockSelected.toVisibility()
+    }
+
+    override fun openMenu() {
+        val args = Bundle()
+        args.putString("UUID", getUuid().toString())
+        args.putString("typeBlock", this::class.simpleName)
+        findNavController().navigate(R.id.action_constructorFragment_to_blockSettingFragment, args)
     }
 }

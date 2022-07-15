@@ -35,6 +35,7 @@ class TouchListener {
                 MotionEvent.ACTION_UP -> {
                     hasTouchBlock(false)
                     blockList.forEach {
+                        it.toggleSelect()
                         hasTouchBlockWithDelete(event.rawX.toInt(), event.rawY.toInt(), false, it)
                     }
                 }
