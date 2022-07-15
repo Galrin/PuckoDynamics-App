@@ -90,9 +90,9 @@ public class LaunchActivity extends AppCompatActivity {
                 return false;
             }
         });
-//        bottomNavigationView.setOnItemReselectedListener(new NavigationBarView.OnItemReselectedListener() {
-//            @Override
-//            public void onNavigationItemReselected(@NonNull MenuItem item) {
+        bottomNavigationView.setOnItemReselectedListener(new NavigationBarView.OnItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
 //                switch (item.getItemId()) {
 //                    case R.id.scripts:
 //                        getSupportFragmentManager().beginTransaction().replace(R.id.ActivityMain_fragment_container, GroupFragment.newInstance()).commit();
@@ -101,8 +101,8 @@ public class LaunchActivity extends AppCompatActivity {
 //                        getSupportFragmentManager().beginTransaction().replace(R.id.ActivityMain_fragment_container, DeviceFragment.newInstance()).commit();
 //                        break;
 //                }
-//            }
-//        });
+            }
+        });
 
     }
 

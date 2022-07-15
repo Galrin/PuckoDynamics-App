@@ -1,11 +1,13 @@
 package com.example.puckodynamics;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.Gravity;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -17,6 +19,15 @@ import com.example.puckodynamics.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.PopupWindow;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +64,32 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
+                        View customView = getLayoutInflater().inflate(R.layout.group_create_popup, null);
+
+            Button closePopupBtn = customView.findViewById(R.id.groupCreateButton);
+
+            EditText edit = customView.findViewById(R.id.groupName);
+
+            //instantiate popup window
+            PopupWindow popupWindow = new PopupWindow(customView, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
+            popupWindow.setFocusable(true);
+            //display the popup window
+            popupWindow.showAtLocation(item.getActionView(), Gravity.CENTER, 0, 0);
+
+            //close the popup window on button click
+            closePopupBtn.setOnClickListener(v11 -> {
+                FileOutputStream fos;
+                try {
+                    fos = getApplicationContext().openFileOutput(edit.getText().toString(), Context.MODE_PRIVATE);
+                    fos.write("aa".getBytes(StandardCharsets.UTF_8));
+                    fos.close();
+                    ((AppDelegate)getApplicationContext()).revalidateGroups();
+                   // mGroupRecycler.requestLayout();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                popupWindow.dismiss();
+            });
             return true;
         }
 
