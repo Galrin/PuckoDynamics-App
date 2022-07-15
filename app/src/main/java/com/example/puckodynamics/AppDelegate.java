@@ -5,7 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.puckodynamics.data.model.Group;
-import com.example.puckodynamics.data.model.Script;
+import com.example.puckodynamics.data.model.Device;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -21,12 +21,10 @@ public class AppDelegate extends Application {
 //        groups.add(new Group("Будни"));
 //        groups.add(new Group("Ванная"));
  //   }
-    List<Script> scripts = new ArrayList<>();
+    List<Device> scripts = new ArrayList<>();
     {
-        scripts.add(new Script("Уходим"));
-        scripts.add(new Script("Приходим"));
-        scripts.add(new Script("Жарко"));
-        scripts.add(new Script("Романтика"));
+        scripts.add(new Device("Колонка Алиса", R.drawable.alice));
+        scripts.add(new Device("Пылесос", R.drawable.vacuum_robot));
     }
 
     @Override
@@ -54,7 +52,7 @@ public class AppDelegate extends Application {
         return groups;
 
     }
-    public List<Script> getScripts() {
+    public List<Device> getScripts() {
         return scripts;
     }
 }

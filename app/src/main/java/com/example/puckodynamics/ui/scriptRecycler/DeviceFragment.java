@@ -17,16 +17,15 @@ import android.widget.Toast;
 
 import com.example.puckodynamics.AppDelegate;
 import com.example.puckodynamics.R;
-import com.example.puckodynamics.ui.groupRecycler.GroupAdapter;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ScriptFragment#newInstance} factory method to
+ * Use the {@link DeviceFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ScriptFragment extends Fragment {
+public class DeviceFragment extends Fragment {
 
     RecyclerView mGroupRecycler;
     AppDelegate mAppContext;
@@ -40,14 +39,14 @@ public class ScriptFragment extends Fragment {
     private int mParam1;
 //    private String mParam2;
 
-    public ScriptFragment() {
+    public DeviceFragment() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static ScriptFragment newInstance(int position) {
-        ScriptFragment fragment = new ScriptFragment();
+    public static DeviceFragment newInstance(int position) {
+        DeviceFragment fragment = new DeviceFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, position);
 //        args.putString(ARG_PARAM2, param2);
@@ -68,7 +67,7 @@ public class ScriptFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_script, container, false);
+        return inflater.inflate(R.layout.fragment_devices, container, false);
     }
 
     @Override
@@ -77,8 +76,8 @@ public class ScriptFragment extends Fragment {
         mAppContext = (AppDelegate) getContext().getApplicationContext();
         mGroupRecycler = v.findViewById(R.id.groupRecycler);
 
-        mGroupRecycler.setAdapter(new ScriptAdapter(this, mAppContext.getScripts()));
-        mGroupRecycler.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL));
+        mGroupRecycler.setAdapter(new DeviceAdapter(this, mAppContext.getScripts()));
+        mGroupRecycler.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         //mGroupRecycler.addItemDecoration();
 
         mFab = v.findViewById(R.id.floatingActionButton);

@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+//NavHostFragment.findNavController(FirstFragment.this)
+//                .navigate(R.id.action_FirstFragment_to_SecondFragment));
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

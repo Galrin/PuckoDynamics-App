@@ -6,16 +6,15 @@ import android.widget.Button;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.puckodynamics.R;
-import com.example.puckodynamics.data.model.Group;
-import com.example.puckodynamics.data.model.Script;
+import com.example.puckodynamics.data.model.Device;
 
-public class ScriptHolder extends RecyclerView.ViewHolder {
+public class DeviceHolder extends RecyclerView.ViewHolder {
 
-    ScriptAdapter groupAdapter;
+    DeviceAdapter groupAdapter;
     Button mTextView;
     int position;
 
-    public ScriptHolder(View view) {
+    public DeviceHolder(View view) {
         super(view);
 
         mTextView = view.findViewById(R.id.group_text);
@@ -28,12 +27,12 @@ public class ScriptHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void bind(Script group, int position) {
+    public void bind(Device group, int position) {
         mTextView.setText(group.getName());
         this.position = position;
     }
 
-    public ScriptHolder build(ScriptAdapter groupAdapter) {
+    public DeviceHolder build(DeviceAdapter groupAdapter) {
         this.groupAdapter = groupAdapter;
         return this;
     }

@@ -5,13 +5,13 @@ import java.util.List;
 public class Group {
 
     String name;
-    List<Script> scriptList;
+    List<Device> scriptList;
 
     public Group(String name) {
         this.name = name;
     }
 
-    public Group(String name, List<Script> scriptList) {
+    public Group(String name, List<Device> scriptList) {
         this.name = name;
         this.scriptList = scriptList;
     }

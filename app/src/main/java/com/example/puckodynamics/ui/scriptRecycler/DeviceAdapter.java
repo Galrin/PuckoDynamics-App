@@ -1,6 +1,5 @@
 package com.example.puckodynamics.ui.scriptRecycler;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,34 +8,31 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.puckodynamics.R;
-import com.example.puckodynamics.data.model.Group;
-import com.example.puckodynamics.data.model.Script;
-import com.example.puckodynamics.ui.LaunchActivity;
-import com.example.puckodynamics.ui.groupRecycler.GroupFragment;
+import com.example.puckodynamics.data.model.Device;
 
 import java.util.List;
 
-public class ScriptAdapter extends RecyclerView.Adapter<ScriptHolder> {
+public class DeviceAdapter extends RecyclerView.Adapter<DeviceHolder> {
 
-    List<Script> groupList;
-    ScriptFragment activity;
+    List<Device> groupList;
+    DeviceFragment activity;
 
-    public ScriptAdapter(ScriptFragment activity, List<Script> groupList) {
+    public DeviceAdapter(DeviceFragment activity, List<Device> groupList) {
         this.groupList = groupList;
         this.activity = activity;
     }
 
     @NonNull
     @Override
-    public ScriptHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DeviceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.li_group, parent, false);
 
-        return new ScriptHolder(view).build(this);
+        return new DeviceHolder(view).build(this);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ScriptHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DeviceHolder holder, int position) {
         holder.bind(groupList.get(position), position);
     }
 
