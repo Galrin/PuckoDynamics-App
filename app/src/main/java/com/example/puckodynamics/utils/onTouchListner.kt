@@ -5,6 +5,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.example.puckodynamics.ui.blocks.BlockBase
+import java.lang.Math.*
 
 class TouchListener {
 
@@ -18,7 +19,7 @@ class TouchListener {
         this.hasTouchBlockWithDelete = onTouch
     }
 
-    fun getOnTouchListener(container: ViewGroup, blockList: List<BlockBase>): View.OnTouchListener {
+    fun getOnTouchListenerMove(container: ViewGroup, blockList: List<BlockBase>): View.OnTouchListener {
 
         var xDelta = 0f
         var yDelta = 0f
@@ -35,7 +36,7 @@ class TouchListener {
                 MotionEvent.ACTION_UP -> {
                     hasTouchBlock(false)
                     blockList.forEach {
-                        it.toggleSelect()
+                        it.setSelectedBlock(false)
                         hasTouchBlockWithDelete(event.rawX.toInt(), event.rawY.toInt(), false, it)
                     }
                 }
@@ -57,6 +58,54 @@ class TouchListener {
                             it.translationY = rootMinY.toFloat()
                         if (it.translationX + width > rootMaxX)
                             it.translationX = rootMaxX.toFloat() - width
+
+//                        println("rootMinX = $rootMinX, rootMinY = $rootMinY, rootMaxX = $rootMaxX")
+
+                        hasTouchBlockWithDelete(event.rawX.toInt(), event.rawY.toInt(), true, it)
+                    }
+
+                    xDelta = event.rawX
+                    yDelta = event.rawY
+                }
+            }
+            true
+        }
+
+        return onTouchListener
+    }
+
+    fun getOnTouchListenerScale(blockList: List<BlockBase>): View.OnTouchListener {
+
+        val MAX_ZOOM = 1f
+        val MIN_ZOOM = 0.9f
+
+        var xDelta = 0f
+        var yDelta = 0f
+
+        val onTouchListener = View.OnTouchListener { view, event ->
+            view.performClick()
+
+            when (event.action and MotionEvent.ACTION_MASK) {
+                MotionEvent.ACTION_DOWN -> {
+                    xDelta = event.rawX
+                    yDelta = event.rawY
+                }
+                MotionEvent.ACTION_UP -> {
+                    blockList.forEach {
+                        it.setSelectedBlock(false)
+                    }
+                }
+                MotionEvent.ACTION_POINTER_DOWN -> {}
+                MotionEvent.ACTION_POINTER_UP -> {}
+                MotionEvent.ACTION_MOVE -> {
+                    val x = (xDelta - event.rawX) * 2 + (yDelta - event.rawY) * 2
+                    val d = if (x < 0) 1f else kotlin.math.sqrt(x)
+                    val scale = kotlin.math.max(MIN_ZOOM, kotlin.math.min(d, MAX_ZOOM))
+                    blockList.forEach {
+                        println(d)
+
+                        it.scaleX *= scale
+                        it.scaleY *= scale
 
 //                        println("rootMinX = $rootMinX, rootMinY = $rootMinY, rootMaxX = $rootMaxX")
 

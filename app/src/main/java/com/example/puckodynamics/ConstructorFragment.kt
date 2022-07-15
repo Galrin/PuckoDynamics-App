@@ -99,6 +99,23 @@ class ConstructorFragment : Fragment() {
 
     private var counter = 1
 
+    private fun addBlock(customBlock: BlockBase) {
+        binding.root.addView(customBlock)
+        binding.intro.visibility = (BlockSingleton.blockList.size == 0).toVisibility()
+        BlockSingleton.blockList.add(customBlock)
+        val touchListener = TouchListener()
+        customBlock.setOnClickListener {
+            touchListener.toggleZoneDelete { hasBlockMoved(it) }
+            touchListener.hasCrossBlock { blockX, blockY, hasTouch, block -> hasTouchBlockWithDelete(blockX = blockX, blockY = blockY, hasTouch = hasTouch, block = block) }
+            customBlock.setTouchListenerMove(touchListener.getOnTouchListenerMove(binding.container, getConnectBlocks(customBlock, BlockSingleton.blockList)))
+            customBlock.setTouchListenerScale(touchListener.getOnTouchListenerScale(getConnectBlocks(customBlock, BlockSingleton.blockList)))
+            customBlock.toggleSelect()
+        }
+        customBlock.setName("First name $counter")
+        customBlock.setDescription("First description $counter")
+        counter++
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -119,70 +136,22 @@ class ConstructorFragment : Fragment() {
                 when (item.itemId) {
                     R.id.block_start -> {
                         val customBlock = BlockStart(requireContext(), binding.root)
-                        binding.root.addView(customBlock)
-                        BlockSingleton.blockList.add(customBlock)
-                        binding.intro.visibility = (BlockSingleton.blockList.size == 0).toVisibility()
-                        val touchListener = TouchListener()
-                        customBlock.setOnClickListener {
-                            touchListener.toggleZoneDelete { hasBlockMoved(it) }
-                            touchListener.hasCrossBlock { blockX, blockY, hasTouch, block -> hasTouchBlockWithDelete(blockX = blockX, blockY = blockY, hasTouch = hasTouch, block = block) }
-                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, BlockSingleton.blockList)))
-                            customBlock.toggleSelect()
-                        }
-                        customBlock.setName("First name $counter")
-                        customBlock.setDescription("First description $counter")
-                        counter++
+                        addBlock(customBlock)
                         true
                     }
                     R.id.block_await_if -> {
                         val customBlock = BlockAwaitIf(requireContext(), binding.root)
-                        binding.root.addView(customBlock)
-                        BlockSingleton.blockList.add(customBlock)
-                        binding.intro.visibility = (BlockSingleton.blockList.size == 0).toVisibility()
-                        val touchListener = TouchListener()
-                        customBlock.setOnClickListener {
-                            touchListener.toggleZoneDelete { hasBlockMoved(it) }
-                            touchListener.hasCrossBlock { blockX, blockY, hasTouch, block -> hasTouchBlockWithDelete(blockX = blockX, blockY = blockY, hasTouch = hasTouch, block = block) }
-                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, BlockSingleton.blockList)))
-                            customBlock.toggleSelect()
-                        }
-                        customBlock.setName("First name $counter")
-                        customBlock.setDescription("First description $counter")
-                        counter++
+                        addBlock(customBlock)
                         true
                     }
                     R.id.block_action -> {
                         val customBlock = BlockAction(requireContext(), binding.root)
-                        binding.root.addView(customBlock)
-                        BlockSingleton.blockList.add(customBlock)
-                        binding.intro.visibility = (BlockSingleton.blockList.size == 0).toVisibility()
-                        val touchListener = TouchListener()
-                        customBlock.setOnClickListener {
-                            touchListener.toggleZoneDelete { hasBlockMoved(it) }
-                            touchListener.hasCrossBlock { blockX, blockY, hasTouch, block -> hasTouchBlockWithDelete(blockX = blockX, blockY = blockY, hasTouch = hasTouch, block = block) }
-                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, BlockSingleton.blockList)))
-                            customBlock.toggleSelect()
-                        }
-                        customBlock.setName("First name $counter")
-                        customBlock.setDescription("First description $counter")
-                        counter++
+                        addBlock(customBlock)
                         true
                     }
                     R.id.block_now_if -> {
                         val customBlock = BlockNowIf(requireContext(), binding.root)
-                        binding.root.addView(customBlock)
-                        binding.intro.visibility = (BlockSingleton.blockList.size == 0).toVisibility()
-                        BlockSingleton.blockList.add(customBlock)
-                        val touchListener = TouchListener()
-                        customBlock.setOnClickListener {
-                            touchListener.toggleZoneDelete { hasBlockMoved(it) }
-                            touchListener.hasCrossBlock { blockX, blockY, hasTouch, block -> hasTouchBlockWithDelete(blockX = blockX, blockY = blockY, hasTouch = hasTouch, block = block) }
-                            customBlock.setTouchListener(touchListener.getOnTouchListener(binding.container, getConnectBlocks(customBlock, BlockSingleton.blockList)))
-                            customBlock.toggleSelect()
-                        }
-                        customBlock.setName("First name $counter")
-                        customBlock.setDescription("First description $counter")
-                        counter++
+                        addBlock(customBlock)
                         true
                     }
                     else -> false

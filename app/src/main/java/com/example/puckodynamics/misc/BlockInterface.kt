@@ -13,7 +13,9 @@ interface BlockInterface {
 
     fun toggleZoneConnect(isShow: Boolean)
 
-    fun setTouchListener(onTouchListener: View.OnTouchListener)
+    fun setTouchListenerMove(onTouchListener: View.OnTouchListener)
+
+    fun setTouchListenerScale(onTouchListener: View.OnTouchListener)
 
     fun deAttach()
 

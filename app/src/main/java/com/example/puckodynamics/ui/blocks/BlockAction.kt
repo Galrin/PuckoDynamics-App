@@ -33,8 +33,12 @@ class BlockAction(context: Context, rootView: ViewGroup) : BlockBase(context) {
 
     }
 
-    override fun setTouchListener(onTouchListener: OnTouchListener) {
-        this.setViewToTouchListener(binding.menuBlock.touchBlock, onTouchListener)
+    override fun setTouchListenerMove(onTouchListener: OnTouchListener) {
+        this.setViewToTouchListenerMove(binding.menuBlock.touchBlock, onTouchListener)
+    }
+
+    override fun setTouchListenerScale(onTouchListener: OnTouchListener) {
+        this.setViewToTouchListenerScale(binding.menuBlock.scaleBlock, onTouchListener)
     }
 
     override fun toggleZoneConnect(isShow: Boolean) {
