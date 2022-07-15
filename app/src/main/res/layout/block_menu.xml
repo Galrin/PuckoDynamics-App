@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/setting_block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_settings_24"
+        android:contentDescription="@string/duplicate" />
+    <ImageButton
+        android:id="@+id/unpin_block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_north_east_24"
+        android:contentDescription="@string/duplicate" />
+    <ImageButton
+        android:id="@+id/duplicate_block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_content_copy_24"
+        android:contentDescription="@string/duplicate" />
+    <ImageButton
+        android:id="@+id/scale_block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_pinch_24"
+        android:contentDescription="@string/duplicate" />
+    <ImageButton
+        android:id="@+id/touch_block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_touch_app_24"
+        android:contentDescription="@string/duplicate" />
+
+</LinearLayout>
